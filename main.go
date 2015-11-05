@@ -49,6 +49,8 @@ func main() {
 	router.HandleFunc("/guest", ctrl.GetAllGuests).Methods("GET")
 	router.HandleFunc("/win", ctrl.GetAllWinnners).Methods("GET")
 
+	NewShuffleController(router.PathPrefix("/shuffle").Subrouter(), db)
+
 	fmt.Printf("server running at %s...\n", port)
 	log.Fatal(http.ListenAndServe(":"+port, router))
 }

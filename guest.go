@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
@@ -30,8 +31,24 @@ type Winner struct {
 	Prize  string
 }
 
+type Assignment struct {
+	Tag    string
+	Prize  string
+	MaxWin int
+}
+
 type Controller struct {
 	db *sql.DB
+}
+
+func (ctrl *Controller) MaxWinFor(tag string, prize string) int {
+	sql := fmt.Sprintf("SELECT maxWin FROM assignment WHERE tag='%s' AND prize='%s'", tag, prize)
+	var max int
+	err := ctrl.db.QueryRow(sql).Scan(&max)
+	if err != nil {
+		return 0
+	}
+	return max
 }
 
 func (ctrl *Controller) InsertGuest(g Guest) (int64, error) {

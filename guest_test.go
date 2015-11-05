@@ -68,5 +68,24 @@ func TestImportAll(t *testing.T) {
 	if expected != actual {
 		t.Errorf("expected: %d got: %d", expected, actual)
 	}
+}
 
+func TestGetAssignment(t *testing.T) {
+	var table = []struct {
+		tag    string
+		prize  string
+		maxWin int
+	}{
+		{"浙江", "四等奖", 3},
+		{"石家庄", "一等奖", 0},
+		{"不存在", "一等奖", 0},
+	}
+
+	var max = 0
+	for i := 0; i < len(table); i++ {
+		max = ctrl.MaxWinFor(table[i].tag, table[i].prize)
+		if max != table[i].maxWin {
+			t.Errorf("expected: %d got: %d", table[i].maxWin, max)
+		}
+	}
 }
