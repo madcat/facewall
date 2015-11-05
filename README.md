@@ -1,9 +1,3 @@
-#### database
-
-guest table: uuid, code, name, group, imageUrl
-
-win table: order, gid, prize
-
 ### api
 
   GET /guest
