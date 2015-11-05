@@ -21,6 +21,15 @@ type Win struct {
 	Prize string
 }
 
+type Winner struct {
+	Step   int
+	Code   string
+	Name   string
+	Tag    string
+	ImgUrl string
+	Prize  string
+}
+
 type Controller struct {
 	db *sql.DB
 }
@@ -62,6 +71,32 @@ func (ctrl *Controller) GetAllGuests(w http.ResponseWriter, r *http.Request) {
 	}
 
 	b, err := json.Marshal(guests)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+
+	w.Write(b)
+}
+
+func (ctrl *Controller) GetAllWinnners(w http.ResponseWriter, r *http.Request) {
+	rows, err := ctrl.db.Query("SELECT win.step,code,name,tag,imgUrl,win.prize FROM guest JOIN win on win.gid=guest.gid")
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	var winners []Winner
+	for rows.Next() {
+		var winner Winner
+		err = rows.Scan(&winner.Step, &winner.Code, &winner.Name, &winner.Tag, &winner.ImgUrl, &winner.Prize)
+		if err != nil {
+			http.Error(w, err.Error(), 500)
+			return
+		}
+		winners = append(winners, winner)
+	}
+
+	b, err := json.Marshal(winners)
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		return

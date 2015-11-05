@@ -47,6 +47,7 @@ func main() {
 	router.StrictSlash(true)
 
 	router.HandleFunc("/guest", ctrl.GetAllGuests).Methods("GET")
+	router.HandleFunc("/win", ctrl.GetAllWinnners).Methods("GET")
 
 	fmt.Printf("server running at %s...\n", port)
 	log.Fatal(http.ListenAndServe(":"+port, router))
