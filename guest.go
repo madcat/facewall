@@ -57,7 +57,7 @@ func (ctrl *Controller) InsertGuest(g Guest) (int64, error) {
 }
 
 func (ctrl *Controller) GetAllGuests(w http.ResponseWriter, r *http.Request) {
-	rows, err := ctrl.db.Query("SELECT gid,code,name,tag,imgUrl FROM guest")
+	rows, err := ctrl.db.Query("SELECT gid,code,name,tag,imgUrl,prize,step FROM guest")
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		return
@@ -65,10 +65,18 @@ func (ctrl *Controller) GetAllGuests(w http.ResponseWriter, r *http.Request) {
 	var guests []Guest
 	for rows.Next() {
 		var g Guest
-		err = rows.Scan(&g.Gid, &g.Code, &g.Name, &g.Tag, &g.ImgUrl)
+		var prize sql.NullString
+		var step sql.NullInt64
+		err = rows.Scan(&g.Gid, &g.Code, &g.Name, &g.Tag, &g.ImgUrl, &prize, &step)
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 			return
+		}
+		if step.Valid {
+			g.Step = int(step.Int64)
+		}
+		if prize.Valid {
+			g.Prize = prize.String
 		}
 		guests = append(guests, g)
 	}

@@ -55,8 +55,8 @@ func NewShuffleController(r *mux.Router, db *sql.DB) (*ShuffleController, error)
 		sc.router.StrictSlash(true)
 		sc.router.HandleFunc("/start/{prize}", sc.start).Methods("POST")
 		sc.router.HandleFunc("/end", sc.end).Methods("POST")
-		sc.router.HandleFunc("/history/{step}", sc.history).Methods("GET")
-		sc.router.HandleFunc("/all", sc.all).Methods("GET")
+		sc.router.HandleFunc("/history/{step}", sc.history).Methods("POST")
+		sc.router.HandleFunc("/all", sc.all).Methods("POST")
 		sc.router.HandleFunc("/state", sc.getState).Methods("GET")
 	}
 	return sc, nil

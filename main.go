@@ -53,6 +53,9 @@ func main() {
 	fatalWhenError(err)
 	fmt.Println("每次抽奖个数：", sc.maxStepWinForPrize)
 
+	fs := http.FileServer(http.Dir("html"))
+	router.PathPrefix("/html/").Handler(http.StripPrefix("/html/", fs))
+
 	fmt.Printf("server running at %s...\n", port)
 	log.Fatal(http.ListenAndServe(":"+port, router))
 }

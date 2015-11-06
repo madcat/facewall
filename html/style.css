@@ -1,0 +1,33 @@
+* {padding:0;margin:0;}
+html, body {width: 100%;height: 100%; -webkit-user-select: none;}
+.hidden {display: none;}
+#wrapper {position: absolute; left:0;right:0;top:0;bottom:0;background-color: black;}
+
+#content {left:20px;right:10px;top:19px;bottom:19px;position: absolute;}
+.container {position: relative;}
+.grid {line-height: 13px;}
+.cell-box {margin-right:2px;display: inline-block; width: 52px; height: 52px;position:relative;}
+.cell {position: absolute;top:0;left:0;right:0;bottom:0; color:purple;text-align: center;font-size:1em;line-height: 52px;}
+.cell-on {background-image: url(square.jpg);background-size: contain;background-repeat: no-repeat;background-position: top left;background-color:rgba(0,0,0,0.5);}
+.cell-off {background-color: gray;}
+.cell-box span {position: absolute;top:0;left:0;right:0;bottom:0;text-align: center;line-height: 52px;}
+.mask {position: absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);}
+
+.history {position: absolute; left:0;right:0;top:0;bottom:0;background-color:rgba(0,0,0,0.5);}
+
+.winner {width:100px;height:100px;color:purple;text-align:center;font-size:1.2em;background-image: url(square.jpg);background-size: contain;background-repeat: no-repeat;}
+
+#highlight {position: absolute; left:0;right:0;top:0;bottom:0;background-image: url(./highlight.png);background-repeat: no-repeat;background-size: 100% auto;}
+#bar {height:150px;position: absolute;top:0;bottom:0;left:0;right: 0;margin: auto;}
+#car {position: relative;width: 81px;height: 31px;margin:auto;background-image: url(./car.png);background-size: contain;}
+#wheel1, #wheel2 {position:absolute;background-image: url(./wheel.png);background-size: contain;width: 15px;height: 15px;}
+#wheel1 {top:17px;left:8px;}
+#wheel2 {top:17px;left:59px;}
+#progress {font-family:sans-serif;color: #67bc51;font-size: 1.2em;margin: auto;text-align: center;margin-top: 20px;}
+#label {font-family:sans-serif;color:#4d4d4d;font-size: 1.2em;margin:auto;text-align: center;margin-top: 5px;background-image: url(./loading.png);background-size: contain;background-repeat: no-repeat;width: 54px;height: 14px;}
+
+#rotate {visibility: hidden;background-image: url(./rotate.png);background-size:contain;background-repeat:no-repeat;width: 92px;height:123px;margin:auto;position: absolute;top:0;bottom:0;left:0;right: 0;}
+#logo {visibility: hidden;position:absolute;width:71px;height: auto;bottom:0;left:0;right:0;margin: auto;top:0;margin-top:16px;background-repeat: no-repeat;background-size: contain;}
+.logo-white {background-image: url(./logo.png);}
+.logo-black {background-image: url(./logo-black.png);}
+#link {visibility: hidden;display:block;position:absolute;width:108px;height:16px;right:16px;background-image: url(./link.png);background-repeat: no-repeat;background-size: contain;}
