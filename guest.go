@@ -13,22 +13,8 @@ type Guest struct {
 	Name   string
 	Tag    string
 	ImgUrl string
-}
-
-type Win struct {
-	Wid   int
-	Step  int
-	Gid   string
-	Prize string
-}
-
-type Winner struct {
-	Step   int
-	Code   string
-	Name   string
-	Tag    string
-	ImgUrl string
 	Prize  string
+	Step   int
 }
 
 type Assignment struct {
@@ -97,15 +83,15 @@ func (ctrl *Controller) GetAllGuests(w http.ResponseWriter, r *http.Request) {
 }
 
 func (ctrl *Controller) GetAllWinnners(w http.ResponseWriter, r *http.Request) {
-	rows, err := ctrl.db.Query("SELECT win.step,code,name,tag,imgUrl,win.prize FROM guest JOIN win on win.gid=guest.gid")
+	rows, err := ctrl.db.Query("SELECT step,prize,code,name,tag,imgUrl FROM guest WHERE prize IS NOT NULL AND prize != '' ORDER BY step")
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		return
 	}
-	var winners []Winner
+	var winners []Guest
 	for rows.Next() {
-		var winner Winner
-		err = rows.Scan(&winner.Step, &winner.Code, &winner.Name, &winner.Tag, &winner.ImgUrl, &winner.Prize)
+		var winner Guest
+		err = rows.Scan(&winner.Step, &winner.Prize, &winner.Code, &winner.Name, &winner.Tag, &winner.ImgUrl)
 		if err != nil {
 			http.Error(w, err.Error(), 500)
 			return

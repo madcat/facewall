@@ -23,7 +23,7 @@ var data = []RangeByTag{
 	RangeByTag{17156, 17170, "上元"},
 	RangeByTag{17171, 17190, "武汉"},
 	RangeByTag{17191, 17200, "青岛"},
-	RangeByTag{17291, 17206, "河南"},
+	RangeByTag{17201, 17206, "河南"},
 	RangeByTag{17207, 17211, "江西"},
 	RangeByTag{17212, 17219, "长沙"},
 	RangeByTag{17220, 17225, "辽宁"},
@@ -36,8 +36,10 @@ var data = []RangeByTag{
 	RangeByTag{17257, 17302, "梦果子"},
 	RangeByTag{17303, 17374, "总部"}}
 
-var config = DBConfig{"560f33a30c4cb.sh.cdb.myqcloud.com:6322", "facewall-ganso", "root", "zealioniPLUS!"}
+//var config = DBConfig{"560f33a30c4cb.sh.cdb.myqcloud.com:6322", "facewall-ganso", "root", "zealioniPLUS!"}
+var config = DBConfig{"127.0.0.1:3306", "facewall-ganso", "root", "root"}
 var ctrl Controller
+var sc *ShuffleController
 
 func init() {
 	db, err := sql.Open("mysql", config.connectionString())
@@ -46,9 +48,11 @@ func init() {
 	}
 
 	ctrl = Controller{db}
+
+	sc, err = NewShuffleController(nil, db)
 }
 
-func TestImportAll(t *testing.T) {
+func TestImport(t *testing.T) {
 	expected := 0
 	actual := 0
 	for i := 0; i < len(data); i++ {
@@ -87,5 +91,66 @@ func TestGetAssignment(t *testing.T) {
 		if max != table[i].maxWin {
 			t.Errorf("expected: %d got: %d", table[i].maxWin, max)
 		}
+	}
+}
+
+func TestShuffle(t *testing.T) {
+	var table = []struct {
+		prize  string
+		numWin int
+	}{
+		{"五等奖", 10},
+		{"五等奖", 10},
+		{"五等奖", 10},
+		{"五等奖", 10},
+		{"五等奖", 10},
+		{"五等奖", 10},
+		{"五等奖", 10},
+		{"五等奖", 10},
+		{"五等奖", 0},
+		{"四等奖", 10},
+		{"四等奖", 10},
+		{"四等奖", 10},
+		{"四等奖", 10},
+		{"四等奖", 0},
+		{"三等奖", 5},
+		{"三等奖", 5},
+		{"三等奖", 5},
+		{"三等奖", 5},
+		{"三等奖", 5},
+		{"三等奖", 5},
+		{"三等奖", 0},
+		{"二等奖", 5},
+		{"二等奖", 5},
+		{"二等奖", 5},
+		{"二等奖", 5},
+		{"二等奖", 0},
+		{"一等奖", 1},
+		{"一等奖", 1},
+		{"一等奖", 1},
+		{"一等奖", 1},
+		{"一等奖", 1},
+		{"一等奖", 1},
+		{"一等奖", 1},
+		{"一等奖", 1},
+		{"一等奖", 1},
+		{"一等奖", 1},
+		{"一等奖", 0},
+	}
+	for i := 0; i < len(table); i++ {
+		winners, err := sc.stepWinnersForPrize(table[i].prize)
+		if err != nil {
+			t.Error(err)
+		}
+		if len(winners) != table[i].numWin {
+			t.Errorf("step: %d, prize: %s, expected: %d, got: %d", i+1, table[i].prize, table[i].numWin, len(winners))
+		}
+	}
+}
+
+func TestReset(t *testing.T) {
+	err := sc.reset()
+	if err != nil {
+		t.Error(err)
 	}
 }

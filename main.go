@@ -47,9 +47,11 @@ func main() {
 	router.StrictSlash(true)
 
 	router.HandleFunc("/guest", ctrl.GetAllGuests).Methods("GET")
-	router.HandleFunc("/win", ctrl.GetAllWinnners).Methods("GET")
+	router.HandleFunc("/winner", ctrl.GetAllWinnners).Methods("GET")
 
-	NewShuffleController(router.PathPrefix("/shuffle").Subrouter(), db)
+	sc, err := NewShuffleController(router.PathPrefix("/shuffle").Subrouter(), db)
+	fatalWhenError(err)
+	fmt.Println("每次抽奖个数：", sc.maxStepWinForPrize)
 
 	fmt.Printf("server running at %s...\n", port)
 	log.Fatal(http.ListenAndServe(":"+port, router))
