@@ -177,7 +177,15 @@ func (sc *ShuffleController) stepWinnersForPrize(prize string) (int64, []int, er
 	}
 	fmt.Println("有效:", len(tags), ":", tags)
 	if len(tags) == 0 {
-		return step - 1, nil, nil
+		err := sc.db.QueryRow(fmt.Sprintf("SELECT MAX(step) FROM guest WHERE prize='%s'", prize)).Scan(&nullStep)
+		if err != nil {
+			return -1, nil, err
+		}
+		if nullStep.Valid {
+			step = nullStep.Int64
+		}
+
+		return step, nil, nil
 	}
 	Shuffle(tags)
 	num := maxStepWin
