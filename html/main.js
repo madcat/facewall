@@ -21,6 +21,10 @@ grid.controller = function(){
         c.state(s)
         if (s.indexOf("shuffling")==0) {
           c.startShuffling()
+        } else if (s.indexOf("history")==0){
+          m.request({method:"GET", url:"/shuffle/"+s}).then(function(data){
+            c.historyWinners(data)
+          })
         }
       }
       setTimeout(c.pullState, 1000)
@@ -61,9 +65,11 @@ grid.view = function(ctrl){
       })
     ]),
     m(".history", {class:ctrl.state().indexOf("history")==0?"":"hidden"}, [
-      ctrl.historyWinners().map(function(g){
-        return m(".winner", g.Code)
-      })
+      m(".winner-box", [
+        ctrl.historyWinners().map(function(g){
+          return m(".winner", g.Code)
+        })
+      ])
     ])
   ])
 }

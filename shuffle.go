@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
@@ -60,6 +61,8 @@ func NewShuffleController(r *mux.Router, db *sql.DB) (*ShuffleController, error)
 		sc.router.HandleFunc("/history/{step}", sc.history).Methods("POST")
 		sc.router.HandleFunc("/all", sc.all).Methods("POST")
 		sc.router.HandleFunc("/state", sc.getState).Methods("GET")
+
+		sc.router.HandleFunc("/history/{step}", sc.getStep).Methods("GET")
 	}
 	return sc, nil
 }
@@ -215,6 +218,33 @@ func (sc *ShuffleController) stepWinnersForPrize(prize string) (int64, []int, er
 	fmt.Println("获奖:", len(winners), ":", winners)
 
 	return step, winners, nil
+}
+
+func (sc *ShuffleController) getStep(w http.ResponseWriter, r *http.Request) {
+	step := mux.Vars(r)["step"]
+	rows, err := sc.db.Query(fmt.Sprintf("SELECT step,prize,code,name,tag,imgUrl FROM guest WHERE step=%s", step))
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	winners := make([]Guest, 0)
+	for rows.Next() {
+		var winner Guest
+		err = rows.Scan(&winner.Step, &winner.Prize, &winner.Code, &winner.Name, &winner.Tag, &winner.ImgUrl)
+		if err != nil {
+			http.Error(w, err.Error(), 500)
+			return
+		}
+		winners = append(winners, winner)
+	}
+
+	b, err := json.Marshal(winners)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+
+	w.Write(b)
 }
 
 func (sc *ShuffleController) reset() error {

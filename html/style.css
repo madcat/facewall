@@ -14,8 +14,8 @@ html, body {width: 100%;height: 100%; -webkit-user-select: none;}
 .mask {position: absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);}
 
 .history {position: absolute; left:0;right:0;top:0;bottom:0;background-color:rgba(0,0,0,0.5);}
-
-.winner {width:100px;height:100px;color:purple;text-align:center;font-size:1.2em;background-image: url(square.jpg);background-size: contain;background-repeat: no-repeat;}
+.winner-box {position: absolute; left:0;right:0;top:0;bottom:0;width: 1150px;height: 350px;text-align: center;margin:auto;}
+.winner {margin-right:50px;margin-bottom:25px;position:relative;display:inline-block;width:150px;height:150px;line-height:150px;color:purple;text-align:center;font-size:32px;background-image: url(square.jpg);background-size: contain;background-repeat: no-repeat;}
 
 #highlight {position: absolute; left:0;right:0;top:0;bottom:0;background-image: url(./highlight.png);background-repeat: no-repeat;background-size: 100% auto;}
 #bar {height:150px;position: absolute;top:0;bottom:0;left:0;right: 0;margin: auto;}
