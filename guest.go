@@ -96,7 +96,7 @@ func (ctrl *Controller) GetAllWinnners(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 500)
 		return
 	}
-	var winners []Guest
+	winners := make([]Guest, 0)
 	for rows.Next() {
 		var winner Guest
 		err = rows.Scan(&winner.Step, &winner.Prize, &winner.Code, &winner.Name, &winner.Tag, &winner.ImgUrl)

@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
@@ -64,17 +65,34 @@ func NewShuffleController(r *mux.Router, db *sql.DB) (*ShuffleController, error)
 }
 
 func (sc *ShuffleController) start(w http.ResponseWriter, r *http.Request) {
-	sc.state = "shuffling/一等奖"
+	prize := mux.Vars(r)["prize"]
+
+	sc.state = "shuffling/" + prize
 	w.Write([]byte(sc.state))
 }
 
 func (sc *ShuffleController) end(w http.ResponseWriter, r *http.Request) {
-	sc.state = "history/2"
+	i := strings.Index(sc.state, "shuffling")
+	if i != 0 {
+		http.Error(w, "can't end if not in shuffling/prize state", 400)
+		return
+	}
+
+	prize := sc.state[i+len("shuffling")+1:]
+	step, _, err := sc.stepWinnersForPrize(prize)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+
+	sc.state = fmt.Sprintf("history/%d", step)
+
 	w.Write([]byte(sc.state))
 }
 
 func (sc *ShuffleController) history(w http.ResponseWriter, r *http.Request) {
-	sc.state = "history/1"
+	step := mux.Vars(r)["step"]
+	sc.state = "history/" + step
 	w.Write([]byte(sc.state))
 }
 
@@ -107,10 +125,10 @@ func (sc *ShuffleController) getPrizes() ([]Prize, error) {
 }
 
 // select winners for prize one step, and save to database
-func (sc *ShuffleController) stepWinnersForPrize(prize string) ([]int, error) {
+func (sc *ShuffleController) stepWinnersForPrize(prize string) (int64, []int, error) {
 	maxStepWin, found := sc.maxStepWinForPrize[prize]
 	if !found {
-		return nil, errors.New("missing prize config for " + prize)
+		return -1, nil, errors.New("missing prize config for " + prize)
 	}
 
 	// this step
@@ -118,7 +136,7 @@ func (sc *ShuffleController) stepWinnersForPrize(prize string) ([]int, error) {
 	var step int64
 	err := sc.db.QueryRow("SELECT MAX(step) FROM guest").Scan(&nullStep)
 	if err != nil {
-		return nil, err
+		return -1, nil, err
 	}
 	if nullStep.Valid {
 		step = nullStep.Int64
@@ -130,7 +148,7 @@ func (sc *ShuffleController) stepWinnersForPrize(prize string) ([]int, error) {
 	// candidate tags
 	rows, err := sc.db.Query(fmt.Sprintf("SELECT tag, prize, maxWin, sumWin FROM sum WHERE prize='%s'", prize))
 	if err != nil {
-		return nil, err
+		return -1, nil, err
 	}
 	defer rows.Close()
 
@@ -142,7 +160,7 @@ func (sc *ShuffleController) stepWinnersForPrize(prize string) ([]int, error) {
 		case err == sql.ErrNoRows:
 			continue
 		case err != nil:
-			return nil, err
+			return -1, nil, err
 		}
 		sums = append(sums, sum)
 	}
@@ -154,7 +172,7 @@ func (sc *ShuffleController) stepWinnersForPrize(prize string) ([]int, error) {
 	}
 	fmt.Println("有效:", len(tags), ":", tags)
 	if len(tags) == 0 {
-		return nil, nil
+		return step - 1, nil, nil
 	}
 	Shuffle(tags)
 	num := maxStepWin
@@ -176,17 +194,17 @@ func (sc *ShuffleController) stepWinnersForPrize(prize string) ([]int, error) {
 			fmt.Println("cant pick winner for ", tag)
 			continue
 		case err != nil:
-			return nil, err
+			return -1, nil, err
 		}
 		if gid.Valid {
 			sqlStr := fmt.Sprintf("UPDATE guest SET prize='%s', step=%d WHERE gid=%d", prize, step, gid.Int64)
 			result, err := sc.db.Exec(sqlStr)
 			if err != nil {
-				return nil, err
+				return -1, nil, err
 			}
 			n, err := result.RowsAffected()
 			if err != nil {
-				return nil, err
+				return -1, nil, err
 			}
 			if n == 1 {
 				winner := int(gid.Int64)
@@ -196,7 +214,7 @@ func (sc *ShuffleController) stepWinnersForPrize(prize string) ([]int, error) {
 	}
 	fmt.Println("获奖:", len(winners), ":", winners)
 
-	return winners, nil
+	return step, winners, nil
 }
 
 func (sc *ShuffleController) reset() error {

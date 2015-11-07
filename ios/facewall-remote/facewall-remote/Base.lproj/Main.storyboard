@@ -105,19 +105,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbx-ko-sMj">
-                                <rect key="frame" x="268" y="486" width="64" height="64"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="Vbx-ko-sMj">
+                                <rect key="frame" x="264" y="478" width="72" height="72"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.91103368997573853" green="0.91118985414505005" blue="0.91102379560470581" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="gnS-Oo-heb"/>
-                                    <constraint firstAttribute="height" constant="64" id="zLh-AS-ZCC"/>
+                                    <constraint firstAttribute="width" constant="72" id="gnS-Oo-heb"/>
+                                    <constraint firstAttribute="height" constant="72" id="zLh-AS-ZCC"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="shuffleTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lQt-90-GPU"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrp-9i-0cP">
-                                <rect key="frame" x="30" y="74" width="540" height="362"/>
+                                <rect key="frame" x="30" y="74" width="540" height="354"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

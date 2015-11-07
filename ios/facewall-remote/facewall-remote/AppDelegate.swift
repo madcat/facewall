@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        registerDefaultsFromSettingsBundle()
         return true
     }
 
@@ -41,6 +41,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func registerDefaultsFromSettingsBundle() {
+        let defs = NSUserDefaults.standardUserDefaults()
+        defs.synchronize()
+        
+        guard let path = NSBundle.mainBundle().pathForResource("Settings", ofType:"bundle") else {
+            print("could not find settings.bundle")
+            return
+        }
+        
+        guard let dict = NSDictionary(contentsOfFile:NSString(string:path).stringByAppendingPathComponent("Root.plist")), prefs = dict.objectForKey("PreferenceSpecifiers") as? Array<Dictionary<String,AnyObject>> else {
+            print("incorrect Settings.bundle format")
+            return
+        }
+        
+        var defaultsToRegister = [String:AnyObject]()
+        for pref in prefs {
+            if let key = pref["Key"] as? String where defs.objectForKey(key) == nil {
+                defaultsToRegister[key] = pref["DefaultValue"]
+            }
+        }
+        
+        defs.registerDefaults(defaultsToRegister)
+        defs.synchronize()
+        
+    }
 }
 

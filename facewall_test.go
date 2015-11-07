@@ -138,12 +138,12 @@ func TestShuffle(t *testing.T) {
 		{"一等奖", 0},
 	}
 	for i := 0; i < len(table); i++ {
-		winners, err := sc.stepWinnersForPrize(table[i].prize)
+		step, winners, err := sc.stepWinnersForPrize(table[i].prize)
 		if err != nil {
 			t.Error(err)
 		}
 		if len(winners) != table[i].numWin {
-			t.Errorf("step: %d, prize: %s, expected: %d, got: %d", i+1, table[i].prize, table[i].numWin, len(winners))
+			t.Errorf("step: %d, prize: %s, expected: %d, got: %d", step, table[i].prize, table[i].numWin, len(winners))
 		}
 	}
 }
