@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67856FBD1BEDA6AC00C3603B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67856FBC1BEDA6AC00C3603B /* AppDelegate.swift */; };
+		67856FBF1BEDA6AC00C3603B /* PrizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67856FBE1BEDA6AC00C3603B /* PrizeViewController.swift */; };
+		67856FC21BEDA6AC00C3603B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67856FC01BEDA6AC00C3603B /* Main.storyboard */; };
+		67856FC41BEDA6AC00C3603B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67856FC31BEDA6AC00C3603B /* Assets.xcassets */; };
+		67856FC71BEDA6AC00C3603B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67856FC51BEDA6AC00C3603B /* LaunchScreen.storyboard */; };
+		67856FD01BEDA83100C3603B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67856FCF1BEDA83100C3603B /* Settings.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		67856FB91BEDA6AC00C3603B /* facewall-remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "facewall-remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		67856FBC1BEDA6AC00C3603B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		67856FBE1BEDA6AC00C3603B /* PrizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeViewController.swift; sourceTree = "<group>"; };
+		67856FC11BEDA6AC00C3603B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		67856FC31BEDA6AC00C3603B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67856FC61BEDA6AC00C3603B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		67856FC81BEDA6AC00C3603B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67856FCF1BEDA83100C3603B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67856FB61BEDA6AC00C3603B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67856FB01BEDA6AC00C3603B = {
+			isa = PBXGroup;
+			children = (
+				67856FBB1BEDA6AC00C3603B /* facewall-remote */,
+				67856FBA1BEDA6AC00C3603B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67856FBA1BEDA6AC00C3603B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67856FB91BEDA6AC00C3603B /* facewall-remote.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67856FBB1BEDA6AC00C3603B /* facewall-remote */ = {
+			isa = PBXGroup;
+			children = (
+				67856FBC1BEDA6AC00C3603B /* AppDelegate.swift */,
+				67856FBE1BEDA6AC00C3603B /* PrizeViewController.swift */,
+				67856FC01BEDA6AC00C3603B /* Main.storyboard */,
+				67856FC31BEDA6AC00C3603B /* Assets.xcassets */,
+				67856FC51BEDA6AC00C3603B /* LaunchScreen.storyboard */,
+				67856FC81BEDA6AC00C3603B /* Info.plist */,
+				67856FCF1BEDA83100C3603B /* Settings.bundle */,
+			);
+			path = "facewall-remote";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67856FB81BEDA6AC00C3603B /* facewall-remote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67856FCB1BEDA6AC00C3603B /* Build configuration list for PBXNativeTarget "facewall-remote" */;
+			buildPhases = (
+				67856FB51BEDA6AC00C3603B /* Sources */,
+				67856FB61BEDA6AC00C3603B /* Frameworks */,
+				67856FB71BEDA6AC00C3603B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "facewall-remote";
+			productName = "facewall-remote";
+			productReference = 67856FB91BEDA6AC00C3603B /* facewall-remote.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67856FB11BEDA6AC00C3603B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = zealion;
+				TargetAttributes = {
+					67856FB81BEDA6AC00C3603B = {
+						CreatedOnToolsVersion = 7.1;
+					};
+				};
+			};
+			buildConfigurationList = 67856FB41BEDA6AC00C3603B /* Build configuration list for PBXProject "facewall-remote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67856FB01BEDA6AC00C3603B;
+			productRefGroup = 67856FBA1BEDA6AC00C3603B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67856FB81BEDA6AC00C3603B /* facewall-remote */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67856FB71BEDA6AC00C3603B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67856FD01BEDA83100C3603B /* Settings.bundle in Resources */,
+				67856FC71BEDA6AC00C3603B /* LaunchScreen.storyboard in Resources */,
+				67856FC41BEDA6AC00C3603B /* Assets.xcassets in Resources */,
+				67856FC21BEDA6AC00C3603B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67856FB51BEDA6AC00C3603B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67856FBF1BEDA6AC00C3603B /* PrizeViewController.swift in Sources */,
+				67856FBD1BEDA6AC00C3603B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		67856FC01BEDA6AC00C3603B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67856FC11BEDA6AC00C3603B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		67856FC51BEDA6AC00C3603B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67856FC61BEDA6AC00C3603B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		67856FC91BEDA6AC00C3603B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		67856FCA1BEDA6AC00C3603B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67856FCC1BEDA6AC00C3603B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "facewall-remote/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zealion.facewall-remote";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		67856FCD1BEDA6AC00C3603B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "facewall-remote/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zealion.facewall-remote";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67856FB41BEDA6AC00C3603B /* Build configuration list for PBXProject "facewall-remote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67856FC91BEDA6AC00C3603B /* Debug */,
+				67856FCA1BEDA6AC00C3603B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67856FCB1BEDA6AC00C3603B /* Build configuration list for PBXNativeTarget "facewall-remote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67856FCC1BEDA6AC00C3603B /* Debug */,
+				67856FCD1BEDA6AC00C3603B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67856FB11BEDA6AC00C3603B /* Project object */;
+}
