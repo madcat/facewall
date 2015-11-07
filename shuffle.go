@@ -63,6 +63,8 @@ func NewShuffleController(r *mux.Router, db *sql.DB) (*ShuffleController, error)
 		sc.router.HandleFunc("/state", sc.getState).Methods("GET")
 
 		sc.router.HandleFunc("/history/{step}", sc.getStep).Methods("GET")
+
+		sc.router.HandleFunc("/reset", sc.handleReset).Methods("POST")
 	}
 	return sc, nil
 }
@@ -245,6 +247,14 @@ func (sc *ShuffleController) getStep(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Write(b)
+}
+
+func (sc *ShuffleController) handleReset(w http.ResponseWriter, r *http.Request) {
+	err := sc.reset()
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
 }
 
 func (sc *ShuffleController) reset() error {
