@@ -3,19 +3,19 @@ html, body {width: 100%;height: 100%; -webkit-user-select: none;}
 .hidden {display: none;}
 #wrapper {position: absolute; left:0;right:0;top:0;bottom:0;background-color: black;}
 
-#content {left:20px;right:10px;top:19px;bottom:19px;position: absolute;}
+#content {left:5px;top:5px;width:1014px;height:758px;position: absolute;}
 .container {position: relative;}
 .grid {line-height: 13px;}
-.cell-box {margin-right:2px;display: inline-block; width: 52px; height: 52px;position:relative;}
-.cell {position: absolute;top:0;left:0;right:0;bottom:0; color:purple;text-align: center;font-size:1em;line-height: 52px;}
+.cell-box {margin-right:2px;display: inline-block; width: 43.5px; height: 43.5px;position:relative;}
+.cell {position: absolute;top:0;left:0;right:0;bottom:0; color:purple;text-align: center;font-size:1em;line-height: 42px;}
 .cell-on {background-image: url(square.jpg);background-size: contain;background-repeat: no-repeat;background-position: top left;background-color:rgba(0,0,0,0.5);}
 .cell-off {background-color: gray;}
-.cell-box span {position: absolute;top:0;left:0;right:0;bottom:0;text-align: center;line-height: 52px;}
+.cell-box span {position: absolute;top:0;left:0;right:0;bottom:0;text-align: center;line-height: 42px;color:purple;font-size: 12px;}
 .mask {position: absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);}
 
 .history {position: absolute; left:0;right:0;top:0;bottom:0;background-color:rgba(0,0,0,0.5);}
-.winner-box {position: absolute; left:0;right:0;top:0;bottom:0;width: 1150px;height: 350px;text-align: center;margin:auto;}
-.winner {margin-right:50px;margin-bottom:25px;position:relative;display:inline-block;width:150px;height:150px;line-height:150px;color:purple;text-align:center;font-size:32px;background-image: url(square.jpg);background-size: contain;background-repeat: no-repeat;}
+.winner-box {position: absolute; left:0;right:0;top:0;bottom:0;width: 625px;height: 250px;text-align: center;margin:auto;}
+.winner {margin-right:25px;margin-bottom:25px;position:relative;display:inline-block;width:100px;height:100px;line-height:100px;color:purple;text-align:center;font-size:32px;background-image: url(square.jpg);background-size: contain;background-repeat: no-repeat;}
 
 #highlight {position: absolute; left:0;right:0;top:0;bottom:0;background-image: url(./highlight.png);background-repeat: no-repeat;background-size: 100% auto;}
 #bar {height:150px;position: absolute;top:0;bottom:0;left:0;right: 0;margin: auto;}

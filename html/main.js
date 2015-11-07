@@ -24,6 +24,9 @@ grid.controller = function(){
         } else if (s.indexOf("history")==0){
           m.request({method:"GET", url:"/shuffle/"+s}).then(function(data){
             c.historyWinners(data)
+            m.request({method:"GET", url:"/guest"}).then(function(data){
+              c.guests(data)
+            })
           })
         }
       }
