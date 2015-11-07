@@ -23,22 +23,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnC-4C-NMN">
-                                            <rect key="frame" x="14" y="6" width="282" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnC-4C-NMN">
+                                            <rect key="frame" x="14" y="14" width="200" height="15.5"/>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="200" id="uDt-nm-p3A"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEf-MY-eFv">
-                                            <rect key="frame" x="416" y="10" width="128" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEf-MY-eFv">
+                                            <rect key="frame" x="425" y="14" width="128" height="15.5"/>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="128" id="jUR-cs-HBw"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="KnC-4C-NMN" firstAttribute="top" secondItem="zgx-i1-dgT" secondAttribute="topMargin" constant="6" id="GLF-em-RTl"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hEf-MY-eFv" secondAttribute="bottom" constant="6" id="O5h-uw-hvw"/>
+                                        <constraint firstItem="hEf-MY-eFv" firstAttribute="top" secondItem="zgx-i1-dgT" secondAttribute="topMargin" constant="6" id="evI-fi-gV3"/>
+                                        <constraint firstItem="KnC-4C-NMN" firstAttribute="leading" secondItem="zgx-i1-dgT" secondAttribute="leadingMargin" constant="6" id="kno-1F-m1E"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="KnC-4C-NMN" secondAttribute="bottom" constant="6" id="lVh-aX-myD"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hEf-MY-eFv" secondAttribute="trailing" constant="6" id="zj2-Bj-dSE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>

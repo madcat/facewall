@@ -49,7 +49,9 @@ class PrizeViewController: UITableViewController {
                         
                         
                     }
-                    self.prizeTableView.reloadData()
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.prizeTableView.reloadData()
+                    })
                 } catch {
                     self.showError("GET /prize parse json error")
                 }
