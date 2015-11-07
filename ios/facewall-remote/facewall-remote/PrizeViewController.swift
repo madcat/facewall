@@ -15,7 +15,16 @@ class PrizeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let displayAllButton : UIBarButtonItem = UIBarButtonItem(title: "显示所有", style: UIBarButtonItemStyle.Plain, target: self, action: "displayAll")
+        
 
+        self.navigationItem.rightBarButtonItem = displayAllButton
+
+        getAllPrizes()
+    }
+    
+    func getAllPrizes(){
         guard let host = NSUserDefaults.standardUserDefaults().stringForKey("host") where host != "" else {
             showError("未设置服务器地址，请设置并重启应用")
             return
@@ -58,6 +67,37 @@ class PrizeViewController: UITableViewController {
             default:
                 self.showError("GET /prize status not 200")
                 print("GET /prize HTTP \(httpResponse.statusCode)")
+            }
+            }.resume()
+    }
+    
+    func displayAll(){
+        guard let host = NSUserDefaults.standardUserDefaults().stringForKey("host") where host != "" else {
+            showError("未设置服务器地址，请设置并重启应用")
+            return
+        }
+        
+        let url = NSURL(string: "http://\(host)/shuffle/all")
+        let request = NSMutableURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 20)
+        request.HTTPMethod = "POST"
+        
+        NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+            if error != nil {
+                print("POST /shuffle/all: \(error?.description)")
+                return
+            }
+            
+            guard let httpResponse = response as? NSHTTPURLResponse else {
+                self.showError("无法连接服务器，请检查网络并重启应用")
+                return
+            }
+            
+            switch httpResponse.statusCode {
+            case 200:
+                print("POST /shuffle/all success")
+            default:
+                self.showError("GET /prize status not 200")
+                print("POST /shuffle/all HTTP \(httpResponse.statusCode)")
             }
         }.resume()
     }
