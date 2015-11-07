@@ -115,3 +115,29 @@ func (ctrl *Controller) GetAllWinnners(w http.ResponseWriter, r *http.Request) {
 
 	w.Write(b)
 }
+
+func (ctrl *Controller) GetAllPrizes(w http.ResponseWriter, r *http.Request) {
+	rows, err := ctrl.db.Query("SELECT id,prize FROM prize ORDER BY id")
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	var prizes []Prize
+	for rows.Next() {
+		var p Prize
+		err = rows.Scan(&p.Id, &p.Prize)
+		if err != nil {
+			http.Error(w, err.Error(), 500)
+			return
+		}
+		prizes = append(prizes, p)
+	}
+
+	b, err := json.Marshal(prizes)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+
+	w.Write(b)
+}

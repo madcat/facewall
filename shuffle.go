@@ -10,6 +10,7 @@ import (
 )
 
 type Prize struct {
+	Id         int
 	Prize      string
 	MaxStepWin int
 }

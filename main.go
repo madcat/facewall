@@ -48,6 +48,7 @@ func main() {
 
 	router.HandleFunc("/guest", ctrl.GetAllGuests).Methods("GET")
 	router.HandleFunc("/winner", ctrl.GetAllWinnners).Methods("GET")
+	router.HandleFunc("/prize", ctrl.GetAllPrizes).Methods("GET")
 
 	sc, err := NewShuffleController(router.PathPrefix("/shuffle").Subrouter(), db)
 	fatalWhenError(err)

@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS assignment (
 );
 
 CREATE TABLE IF NOT EXISTS prize (
+  id INT(10) NOT NULL,
   prize VARCHAR(64) NOT NULL,
   maxStepWin INT(10) NULL DEFAULT 1,
   PRIMARY KEY (prize),

@@ -3,27 +3,48 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--所有奖项-->
         <scene sceneID="A8J-i5-GjM">
             <objects>
-                <tableViewController id="zb7-qU-T2X" sceneMemberID="viewController">
+                <tableViewController id="zb7-qU-T2X" customClass="PrizeViewController" customModule="facewall_remote" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Op9-Dk-C8U">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xid-IY-c32">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="prizeCell" id="Xid-IY-c32" customClass="PrizeTableViewCell" customModule="facewall_remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xid-IY-c32" id="zgx-i1-dgT">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnC-4C-NMN">
+                                            <rect key="frame" x="14" y="6" width="282" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEf-MY-eFv">
+                                            <rect key="frame" x="416" y="10" width="128" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="prizeLabel" destination="KnC-4C-NMN" id="Pe4-AJ-pp2"/>
+                                    <outlet property="sumLabel" destination="hEf-MY-eFv" id="o1r-0W-z2z"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -31,11 +52,15 @@
                             <outlet property="delegate" destination="zb7-qU-T2X" id="qfc-yc-1Pw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="SFQ-zX-Kur"/>
+                    <navigationItem key="navigationItem" title="所有奖项" id="SFQ-zX-Kur"/>
+                    <connections>
+                        <outlet property="prizeTableView" destination="Op9-Dk-C8U" id="d1W-pG-Sbz"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="shuffleForPrize" id="4nd-jW-Jo1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAz-xM-tCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-269" y="593"/>
+            <point key="canvasLocation" x="-281" y="543"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hz2-xM-tjb">
@@ -54,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="-1089" y="593"/>
         </scene>
-        <!--View Controller-->
+        <!--Shuffle View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="facewall_remote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ShuffleViewController" customModule="facewall_remote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -65,9 +90,41 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbx-ko-sMj">
+                                <rect key="frame" x="268" y="486" width="64" height="64"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.91103368997573853" green="0.91118985414505005" blue="0.91102379560470581" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="gnS-Oo-heb"/>
+                                    <constraint firstAttribute="height" constant="64" id="zLh-AS-ZCC"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Start"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrp-9i-0cP">
+                                <rect key="frame" x="30" y="74" width="540" height="362"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wrp-9i-0cP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="5N2-WH-KbY"/>
+                            <constraint firstItem="wrp-9i-0cP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="5tN-LE-31i"/>
+                            <constraint firstItem="Vbx-ko-sMj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bb9-PJ-tiN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Vbx-ko-sMj" secondAttribute="bottom" constant="50" id="ZTu-Tk-cpu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wrp-9i-0cP" secondAttribute="trailing" constant="10" id="oqT-fz-f8G"/>
+                            <constraint firstItem="Vbx-ko-sMj" firstAttribute="top" secondItem="wrp-9i-0cP" secondAttribute="bottom" constant="50" id="udM-zh-y8H"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="shuffleButton" destination="Vbx-ko-sMj" id="2Rc-me-1ML"/>
+                        <outlet property="stepsTextView" destination="wrp-9i-0cP" id="5gY-pB-ChS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
