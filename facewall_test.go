@@ -34,7 +34,8 @@ var data = []RangeByTag{
 	RangeByTag{17250, 17253, "京津"},
 	RangeByTag{17254, 17256, "台元"},
 	RangeByTag{17257, 17302, "梦果子"},
-	RangeByTag{17303, 17374, "总部"}}
+	RangeByTag{17303, 17374, "总部"},
+	RangeByTag{17375, 17376, "其他"}}
 
 //var config = DBConfig{"560f33a30c4cb.sh.cdb.myqcloud.com:6322", "facewall-ganso", "root", "zealioniPLUS!"}
 
