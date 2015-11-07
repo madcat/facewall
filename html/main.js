@@ -22,6 +22,8 @@ grid.controller = function(){
         if (s.indexOf("shuffling")==0) {
           c.startShuffling()
         } else if (s.indexOf("history")==0){
+          c.historyWinners([])
+          m.redraw()
           m.request({method:"GET", url:"/shuffle/"+s}).then(function(data){
             c.historyWinners(data)
             m.request({method:"GET", url:"/guest"}).then(function(data){
