@@ -33,7 +33,6 @@ list.controller = function(){
 }
 list.view = function(ctrl){
   return m(".container-fluid", [
-    m(".row", [m("button.btn-danger", {onclick:ctrl.resetWinners}, "重置获奖记录")]),
     m(".row", [
         m("table.table-condensed.table.users", [
           m("thead", [
@@ -52,6 +51,7 @@ list.view = function(ctrl){
         ])
       ]),
     m(".row", [m(".footer", "共计"+ctrl.winners().length+"人")]),
+    m(".row", [m("button.btn-danger", {onclick:ctrl.resetWinners}, "重置获奖记录")])
     ])
 }
 
