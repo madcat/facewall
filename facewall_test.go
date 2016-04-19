@@ -37,9 +37,9 @@ var data = []RangeByTag{
 	RangeByTag{17303, 17374, "总部"},
 	RangeByTag{17375, 17390, "其他"}}
 
-var config = DBConfig{"560f33a30c4cb.sh.cdb.myqcloud.com:6322", "facewall-ganso", "root", "zealioniPLUS!"}
+//var config = DBConfig{"560f33a30c4cb.sh.cdb.myqcloud.com:6322", "facewall-ganso", "root", "zealioniPLUS!"}
 
-//var config = DBConfig{"127.0.0.1:3306", "facewall-ganso", "root", "root"}
+var config = DBConfig{"127.0.0.1:3306", "facewall-ganso", "root", "root"}
 var ctrl Controller
 var sc *ShuffleController
 
